@@ -73,6 +73,10 @@ lean_research/
 │       ├── BridgeExt.lean                 # 引理 C & D：IsL4 / IsPoor1Ext 与全部 5 条 1-/2-线串桥接禁令
 │       ├── ThreadPartition.lean           # anchoredDegTwo 三分计数与 36 倍参数化线串转权 wThread
 │       └── Discharging22_9.lean           # 里程碑 2：36 倍整数放电证明 mad(G) < 22/9（与 Discharging12_5 完全解耦）
+├── paper/
+│   ├── main.tex                           # 英文学术论文 LaTeX 源码（面向 arXiv math.CO / Discrete Mathematics）
+│   ├── references.bib                     # 已核验的 BibTeX 文献库（14 篇文献）
+│   └── main.pdf                           # 零错误零告警编译成品（24 页，含 3 张 TikZ 图与 4 张三线表）
 ├── SUMMARY.md                             # 完整研究总结、36 倍放电核验表与局部障碍诊断
 ├── RESEARCH_LOG.md                        # 全流程研究探索与编译核验日志
 └── PROPOSALS.md                           # 初始三候选课题调研与选型对比
