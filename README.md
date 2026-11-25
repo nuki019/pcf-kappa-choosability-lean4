@@ -89,3 +89,9 @@ lean_research/
 - **完整研究报告与放电核验表**：[`SUMMARY.md`](SUMMARY.md)
 - **探索过程与编译审计日志**：[`RESEARCH_LOG.md`](RESEARCH_LOG.md)
 - **初始候选课题对比**：[`PROPOSALS.md`](PROPOSALS.md)
+
+---
+
+## 开源协议（License）
+
+本项目采用 [Apache License 2.0](LICENSE) 开源协议（与 Lean 4 / Mathlib 生态一致）。
