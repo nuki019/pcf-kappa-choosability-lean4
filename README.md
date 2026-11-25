@@ -1,6 +1,6 @@
 # `lean_research`：稀疏图恰当无冲突 $\kappa_G$-可选择性的 Lean 4 形式化证明
 
-本项目基于 **Lean `v4.36.0`** 与 **Mathlib `v4.36.0`**，对稀疏图的**恰当无冲突（Proper Conflict-Free, PCF）$\kappa_G$-可选择性**完成了零 `sorry`、零自定义公理的机器形式化证明，将最大平均度（Maximum Average Degree, $\operatorname{mad}$）阈值从 2026 年 8 月文献记录 **$\operatorname{mad}(G) < \frac{12}{5}$**（Lu–Ying–Song, `arXiv:2608.29375`）严格推进至 **$\operatorname{mad}(G) < \frac{22}{9}$**。
+本项目基于 **Lean `v4.36.0`** 与 **Mathlib `v4.36.0`**，对稀疏图的**恰当无冲突（Proper Conflict-Free, PCF） $\kappa_G$-可选择性**完成了零 `sorry`、零自定义公理的机器形式化证明，将最大平均度（Maximum Average Degree, $\mathrm{mad}$）阈值从 2026 年 8 月文献记录 **$\mathrm{mad}(G) < \frac{12}{5}$**（Lu–Ying–Song, `arXiv:2608.29375`）严格推进至 **$\mathrm{mad}(G) < \frac{22}{9}$**。
 
 ---
 
@@ -8,18 +8,23 @@
 
 对有限简单图 $G$，定义 Kashima–Škrekovski–Xu（`arXiv:2508.20521`）的列表长度函数：
 
-$$\kappa_G(v) = \begin{cases} 4, & d_G(v) = 2, \\ d_G(v) + 1, & d_G(v) \neq 2. \end{cases}$$
+$$
+\kappa_G(v) = \begin{cases}
+4, & d_G(v) = 2, \\
+d_G(v) + 1, & d_G(v) \neq 2.
+\end{cases}
+$$
 
 本项目在 [`LeanResearch/Main.lean`](LeanResearch/Main.lean) 中导出以下全部通过 Lean 4 内核与 `leanchecker` 认证的定理：
 
 | 定理标识符 | 内容说明 | 学术定位 |
 | :--- | :--- | :--- |
-| `LeanResearch.Main.proposal3_baseline_12_5` | 连通图 $G \not\cong C_5$ 且 `MadLt G 12 5`（$\operatorname{mad}(G) < \frac{12}{5}$）$\implies$ `IsPCFChoosable G (kappa G)` | 复现 Lu–Ying–Song（Aug 2026, `arXiv:2608.29375`）SOTA |
-| `LeanResearch.Main.proposal3_main_theorem` | 连通图 $G \not\cong C_5$ 且 `MadLt G 22 9`（$\operatorname{mad}(G) < \frac{22}{9}$）$\implies$ `IsPCFChoosable G (kappa G)` | **严格超越 $\frac{12}{5}$，推进至 $\frac{22}{9} \approx 2.4444$** |
-| `LeanResearch.Main.madLt_iff_edgeFinset` | 证明 `MadLt G p q` 与教科书标准定义 $\forall S \neq \emptyset,\; q \cdot 2|E(G[S])| < p \cdot |S|$ 严格等价 | 定义忠实度桥梁 |
+| `LeanResearch.Main.proposal3_baseline_12_5` | 连通图 $G \not\cong C_5$ 且 `MadLt G 12 5`（ $\mathrm{mad}(G) < \frac{12}{5}$ ） $\implies$ `IsPCFChoosable G (kappa G)` | 复现 Lu–Ying–Song（Aug 2026, `arXiv:2608.29375`）SOTA |
+| `LeanResearch.Main.proposal3_main_theorem` | 连通图 $G \not\cong C_5$ 且 `MadLt G 22 9`（ $\mathrm{mad}(G) < \frac{22}{9}$ ） $\implies$ `IsPCFChoosable G (kappa G)` | **严格超越 $\frac{12}{5}$，推进至 $\frac{22}{9} \approx 2.4444$** |
+| `LeanResearch.Main.madLt_iff_edgeFinset` | 证明 `MadLt G p q` 与教科书标准定义 $\forall S \neq \emptyset, \quad q \cdot 2\lvert E(G[S])\rvert < p \cdot \lvert S\rvert$ 严格等价 | 定义忠实度桥梁 |
 | `LeanResearch.Main.proposal3_main_theorem_any_color` | 基于 `2 * (G.induce S).edgeFinset.card` 与**任意颜色类型 `α`** 的主定理等价陈述 | 面向审稿人的通用陈述 |
 
-> **平面图推论（纸面标准推论，未形式化平面拓扑）**：由欧拉公式，任意围长 $g \ge 11$ 的平面图满足 $\operatorname{mad}(G) < \frac{2g}{g-2} = \frac{22}{9}$ 且不含 $C_5$ 分支，从而对每个连通分支应用 `proposal3_main_theorem` 即得「**所有围长 $\ge 11$ 的平面图均是 PCF $\kappa_G$-可选择的**」（将原围长下界 $12$ 推进至 $11$）。
+> **平面图推论（纸面标准推论，未形式化平面拓扑）**：由欧拉公式，任意围长 $g \ge 11$ 的平面图满足 $\mathrm{mad}(G) < \frac{2g}{g-2} = \frac{22}{9}$ 且不含 $C_5$ 分支，从而对每个连通分支应用 `proposal3_main_theorem` 即得「**所有围长 $\ge 11$ 的平面图均是 PCF $\kappa_G$-可选择的**」（将原围长下界 $12$ 推进至 $11$）。
 
 ---
 
